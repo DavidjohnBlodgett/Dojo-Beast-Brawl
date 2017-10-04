@@ -5,3 +5,5 @@ myEnvironments
 */node_modules
 node_modules
 Debug
+bin
+obj
