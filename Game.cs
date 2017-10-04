@@ -23,10 +23,8 @@ namespace Dojo_Beast_Brawl {
 
         public bool update() {
 
-            // FUNCTION CALL FOR EACH PHASE...
-            
-            // 2) persent player with action menu (atk, skip, quit?)
             string caseSwitch = renderPlayerMenu();
+
             // eval userinput from menu
             switch (caseSwitch) {
                 case "1":
@@ -35,12 +33,12 @@ namespace Dojo_Beast_Brawl {
                     return continueGame;
                     // break;
                 case "2":
-                    Console.WriteLine("Case 2");
+                    Console.WriteLine("");
                     continueGame = true;
                     return continueGame;
                     // break;
                 case "3":
-                    Console.WriteLine("Case 3");
+                    Console.WriteLine("\n\nGoodbye!\n\n");
                     continueGame = false;
                     return continueGame;
                     // break;
@@ -50,10 +48,6 @@ namespace Dojo_Beast_Brawl {
             }
             Console.WriteLine("I hit default case... not sure why...");
             return false;
-            // 3) if atk ask other player who they wish to defend with (choose one or skip)
-            // 4) eval combat...
-            // 5) check for winning state...
-            // 7) finish turn...
             
         }
 
@@ -68,6 +62,8 @@ namespace Dojo_Beast_Brawl {
 
         // RENDER FUNCTIONS...
         public string renderPlayerMenu() {
+
+            Console.Clear();
 
             players[currentPlayer].draw(deck);
 
@@ -129,7 +125,11 @@ namespace Dojo_Beast_Brawl {
                 otherPlayer = 1;
             }
 
+            Console.Clear();
             Console.WriteLine("\n++++ {0}'s Defence Phase!!!! ++++\n", players[otherPlayer].name);
+
+            // added this just for balancing...
+            players[otherPlayer].draw(deck);
             
             validInput = false;
             InputLine = "";
@@ -160,16 +160,53 @@ namespace Dojo_Beast_Brawl {
             players[otherPlayer].field.Add(players[otherPlayer].hand[input-1]);
             players[otherPlayer].hand.RemoveAt(input-1);
 
+            Console.Clear();
+            Console.WriteLine("*****************************************************************************");
+            Console.WriteLine("*************** PREPARE FOR A BATTLE OF THE AGES!!!!! ***********************");
+            Console.WriteLine("*****************************************************************************");
+            Console.WriteLine("press any key to continue");
+            Console.ReadLine();
+            Console.Clear();
+
             // Note: both fields have the attacking and defending creatures... 
-            Console.WriteLine("\n\n{0} VS {1}!!!\n\n", players[currentPlayer].field[0].name, players[otherPlayer].field[0].name);
+            Console.WriteLine("\n{0}\n", players[currentPlayer].field[0].name);
+            players[currentPlayer].field[0].GetInfo();
 
+            Console.WriteLine("\n VS \n");
+
+            Console.WriteLine("\n{0}\n", players[otherPlayer].field[0].name);
+            players[otherPlayer].field[0].GetInfo();
             
+            // Calc Combat
 
-            return false;
+            if( players[currentPlayer].field[0].atk > players[otherPlayer].field[0].def ) {
+                int leftover = players[currentPlayer].field[0].atk - players[otherPlayer].field[0].def;
+                players[otherPlayer].health -= leftover;
+
+                Console.WriteLine("\n****************************");
+                Console.WriteLine("{0} DEALS {1}", players[currentPlayer].field[0].name, players[currentPlayer].field[0].atk);
+                Console.WriteLine("{0} BLOCKS {1}", players[otherPlayer].field[0].name, players[otherPlayer].field[0].def);
+                Console.WriteLine("{0} TAKES {1} DAMAGE!!!", players[otherPlayer].name, leftover);
+                Console.WriteLine("****************************\n");
+                Console.WriteLine("press any key to continue");
+                Console.ReadLine();
+
+            } else {
+                // no action at the moment...
+            }
+
+            // now remove creatures from the field and check winning state...
+            players[currentPlayer].field.RemoveAt(0);
+            players[otherPlayer].field.RemoveAt(0);
+
+
+
+            return checkWinState(otherPlayer);
         }
 
 
         public void renderSplashScreen() {
+            Console.Clear();
             Console.WriteLine("****************************");
             Console.WriteLine("Welcome to Dojo Beast Brawl!");
             Console.WriteLine("              n__n_    ");
@@ -185,6 +222,21 @@ namespace Dojo_Beast_Brawl {
             Console.WriteLine("****************************");
         }
 
+        public bool checkWinState(int otherPlayer ) {
+            if( players[otherPlayer].health <= 0 ) {
+
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        public void renderWinScreen() {
+            Console.WriteLine("\n\n******************");
+            Console.WriteLine("**** {0} WON THE GAME! ", players[currentPlayer].name);
+            Console.WriteLine("**********************");
+        }
+
         public void createPlayers() {
 
             // CREATE AND ADD TO LIST OF PLAYERS...
@@ -196,18 +248,11 @@ namespace Dojo_Beast_Brawl {
                 players[0].draw(deck);
                 players[1].draw(deck);
             }
-
-            // DEBUG OUTPUT...
-            // Console.WriteLine(players[0].name);
-            // Console.WriteLine(players[0].hand.Count);
-            // Console.WriteLine(players[1].name);
-            // Console.WriteLine(players[1].hand.Count);
         }
 
         public string renderNameInput(string header) {
             Console.WriteLine("\nPlease enter a name for {0}", header);
             return Console.ReadLine();
-
         }
 
         
@@ -221,6 +266,5 @@ namespace Dojo_Beast_Brawl {
             }
             return continueGame;
         }
-
     }
 }
