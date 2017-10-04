@@ -10,6 +10,8 @@ namespace Dojo_Beast_Brawl
         }
         public string name;
         public List<Card> hand = new List<Card>();
+
+        public List<Card> field = new List<Card>();
         public Card draw(Deck deck1){
             Card card1 = deck1.draw();
             // Console.WriteLine(card1.val+card1.suit);

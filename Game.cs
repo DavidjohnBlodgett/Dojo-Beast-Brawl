@@ -23,26 +23,30 @@ namespace Dojo_Beast_Brawl {
             // players.Add(new Player());
         }
 
+        // LOGIC FUNCTIONS...
+
         public bool update() {
 
             // FUNCTION CALL FOR EACH PHASE...
-            // 1) update current player...
-            nextPlayerTurn();
+            
             // 2) persent player with action menu (atk, skip, quit?)
             string caseSwitch = renderPlayerMenu();
             // eval userinput from menu
             switch (caseSwitch) {
                 case "1":
                     Console.WriteLine("Case 1");
-                    return true;
+                    continueGame = true; // will call function and return state...
+                    return continueGame;
                     // break;
                 case "2":
                     Console.WriteLine("Case 2");
-                    return true;
+                    continueGame = true;
+                    return continueGame;
                     // break;
                 case "3":
                     Console.WriteLine("Case 3");
-                    return false;
+                    continueGame = false;
+                    return continueGame;
                     // break;
                 default:
                     Console.WriteLine("Default case");
@@ -61,6 +65,8 @@ namespace Dojo_Beast_Brawl {
             Console.WriteLine("I want to switch to next player in list...");
         }
 
+
+        // RENDER FUNCTIONS...
         public string renderPlayerMenu() {
             bool validInput = false;
             string InputLine = "3"; // set to quit by default just in case...
