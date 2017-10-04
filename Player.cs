@@ -10,7 +10,7 @@ namespace Dojo_Beast_Brawl
         }
         public string name;
 
-        public int health = 20;
+        public int health = 5;
 
         public List<Card> hand = new List<Card>();
 

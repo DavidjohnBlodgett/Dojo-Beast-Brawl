@@ -224,7 +224,7 @@ namespace Dojo_Beast_Brawl {
 
         public bool checkWinState(int otherPlayer ) {
             if( players[otherPlayer].health <= 0 ) {
-
+                renderWinScreen();
                 return false;
             } else {
                 return true;
