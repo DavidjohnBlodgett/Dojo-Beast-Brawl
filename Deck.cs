@@ -33,7 +33,7 @@ namespace Dojo_Beast_Brawl
                 string title2=title[rand.Next(title.Length)];
                 string species2=species[rand.Next(species.Length)];
                 
-                string name1=adjective[adj]+species2+title2;
+                string name1=adjective[adj]+" "+species2+" "+title2;
                 if(adjusters1[adj]==7){
                     int cardAttack = atk+rand.Next(-4,4);
                     int cardDef = def+rand.Next(-4,4);
