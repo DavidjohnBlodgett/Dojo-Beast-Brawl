@@ -9,19 +9,16 @@ namespace Dojo_Beast_Brawl {
         public bool continueGame = true;
 
         public Game() {
-            Console.WriteLine("****************************");
-            Console.WriteLine("Welcome to Dojo Beast Brawl!");
-            Console.WriteLine("              n__n_    ");
-            Console.WriteLine("             /  = =\   ");
-            Console.WriteLine("            /   ._Y_)   ");
-            Console.WriteLine("___________/      "\______");
-            Console.WriteLine("          (_/  (_,  \       ");
-            Console.WriteLine("            \      ( \_,--""""--. ");
-            Console.WriteLine("      __..-,-`.___,-` )-.______.' ");
-            Console.WriteLine("    <'     `-,'   `-, )-'    >      ");
-            Console.WriteLine("     `----._/      ( /"`>.--"           ");
-            Console.WriteLine("            "--..___,--"                 ");
-            Console.WriteLine("****************************");
+            
+            // RENDER SPLASH SCREEN AT START...
+            renderSplashScreen();
+
+            // MAKE A DECK...
+            Deck deck = new Deck();
+
+            Console.WriteLine("First card on deck: Name: {0} ATK:{1} DEF: {2}", deck.cards[0].name, deck.cards[0].atk, deck.cards[0].def);
+            // MAKE 2 PLAYERS...
+            // return
 
             // players.Add(new Player());
         }
@@ -79,6 +76,23 @@ namespace Dojo_Beast_Brawl {
             return InputLine;
             
         }
+
+        public void renderSplashScreen() {
+            Console.WriteLine("****************************");
+            Console.WriteLine("Welcome to Dojo Beast Brawl!");
+            Console.WriteLine("              n__n_    ");
+            Console.WriteLine("             /  = =\\   ");
+            Console.WriteLine("            /   ._Y_)   ");
+            Console.WriteLine("___________/      \"\\______");
+            Console.WriteLine("          (_/  (_,  \\       ");
+            Console.WriteLine("            \\      ( \\_,--\"\"\"\"--. ");
+            Console.WriteLine("      __..-,-`.___,-` )-.______.' ");
+            Console.WriteLine("    <'     `-,'   `-, )-'    >      ");
+            Console.WriteLine("     `----._/      ( /\"`>.--\"           ");
+            Console.WriteLine("            \"--..___,--\"                 ");
+            Console.WriteLine("****************************");
+        }
+        
 
         public bool askContinue() {
             Console.WriteLine("Would you like to continue (y/n):");
