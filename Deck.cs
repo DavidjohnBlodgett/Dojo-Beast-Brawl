@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace DeckofCards
+namespace Dojo_Beast_Brawl
 {
     public class Deck
     {   
