@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DeckofCards
+namespace Dojo_Beast_Brawl
 {
     class Player
     {

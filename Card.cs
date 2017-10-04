@@ -1,6 +1,6 @@
 using System;
 
-namespace DeckofCards
+namespace Dojo_Beast_Brawl
 {
     public class Card
     {
