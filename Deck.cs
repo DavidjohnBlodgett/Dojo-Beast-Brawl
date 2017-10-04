@@ -20,15 +20,16 @@ namespace Dojo_Beast_Brawl
 
         //rewrite generate.
         public void reset(){
-            int cards_in_suit=(size/suits.Length);
-            for(int x =0; x<suits.Length;x++){
-                
-                for(int i=1;i<cards_in_suit+1;i++){
-                    Card newCard= new Card(stringVal[i-1],suits[x],i);
+            
+            for(int x =0; x<size;x++){
+                string name=null;
+                int atk=0;
+                int def=0;
+                    Card newCard= new Card(name,atk,def);
                 cards.Add(newCard);
                 }
             }
-        }
+        
         public Card draw(){
             Card dealtCard=cards[0];
             cards.RemoveAt(0);

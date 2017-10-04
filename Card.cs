@@ -4,14 +4,14 @@ namespace Dojo_Beast_Brawl
 {
     public class Card
     {
-       public string stringVal;
-       public string suit;
-       public int val;
+       public string name;
+       public int atk;
+       public int def;
 
-       public Card(string str,string suit,int val){
-           stringVal=str;
-           this.suit=suit;
-           this.val=val;
+       public Card(string name,int atk,int def){
+           this.name=name;
+           this.atk=atk;
+           this.def=def;
        }
     }
 }
