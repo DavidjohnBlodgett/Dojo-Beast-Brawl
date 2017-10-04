@@ -13,7 +13,91 @@ namespace Dojo_Beast_Brawl
         
         public List<Card> cards = new List<Card>();
         public int size=52;
-        
+        // sprites
+        public string[][] specieSprites = {
+                new string[] {
+                    "( )___( )",
+                    "/__oo   \\",
+                    "( \\/     )",
+                    "| `=/    |",
+                    }, 
+                new string[] {
+                    "dDMHHMM/\b  \\\\",
+                    "(,,._`YQMML  `|",
+                    "#\"\"-;. `\"0\\\\  |",
+                    "      `--. \\> \\\\",
+                    "          `-_<@)",
+                    }, 
+                new string[] {
+                    "  _ ,---. _  ",
+                    "(~-| . . |-~)",
+                    " \\._  0  _,/",
+                    " / `-^-'`-\\",
+                    }, 
+                new string[] {
+                    " |\\_/| ",
+                    "/ o o\\ ",
+                    "/(   )\\",
+                    "/ \\#/ \\",
+                    }, 
+                new string[] {
+                    "   /___, : .___\\",
+                    "  _) >=-( )-=< (_",
+                    " ( (    / \\    ) )",
+                    "  \\_\\  ((_))  /_/",
+                    "    |)/  :  \\(|",
+                    "    |(,-----.)|",
+                    "    \\   '\"`   /",
+                    "    |`---\"---'|",
+                    "    |   `-'   |",
+                    }, 
+                new string[] {
+                    "  .\"`\".",
+                    " / _=_ \\",
+                    "(,(oYo),)",
+                    "|   \"   |",
+                    " \\(---)/ ",
+                    }, 
+                new string[] {
+                    "       ---_ ......._-_--.",
+                    "     (|\\ /      / /| \\  \\",
+                    "     /  /     .'  -=-'   `.",
+                    "    /  /    .'             )",
+                    "  _/  /   .'        _.)   /",
+                    " / o   o        _.-' /  .'",
+                    " \\          _.-'    / .'",
+                    "  \\______.-'//    .'.'",
+                    "   \\|  \\ | //   .'.'",
+                    "    `   \\|//  .'.'",
+                    "     .  .// .'.' ",
+                    "     \\`-|\\_/ /",
+                    "      `/'\\__/ ",
+                    }, 
+                new string[] {
+                    "/.__.\\",
+                    "\\ \\/ /",
+                }, 
+                new string[] {                    
+                    "`\\.      ,/'",
+                    " |\\____//|",
+                    " )/_ `' _\\(",
+                    ",'/-`__'-\\`\\",
+                    "/. (_><_) ,\\",
+                    "` )/`--'\\(`' ",
+                }, 
+                new string[] {
+                    "  \\ )_  _;",
+                    "  (\\[_][_])",
+                    "   |  L  |  ",
+                    "   | \\-_/  ", 
+                }, 
+                new string[] {
+                    " (oo)",
+                    "  \\/",
+                    "  ||",
+                    "  ||",
+                }
+            };
         public string[] adjective = {"Angry", "Sad", "Crazy", "Lustful", "Greedy", "Wrathful", "Flaming", "Tired", "Insightful", "Slow", "Random"};
 
         // public Dictionary[] example ={{name:"Angry",adjusters:[1,-1]}, {name:"Sad",adjusters:[-1,0]}, {name:"Crazy",adjusters:[2,-2]}, {name:"Lustful",adjusters:[-1,2]}, {name:"Greedy",adjusters[0,0]}, {name:"Wrathful",adjusters:[3,-1]}, {name:"Flaming",adjusters[1,-1]}, {name:"Tired",adjusters[-1,-1]}, {name:"Insightful"adjusters[1,1]}, {name:"Slow",adjusters:[-1,-2]}, {name:"Random",adjusters[7,7]}};
@@ -31,8 +115,9 @@ namespace Dojo_Beast_Brawl
                 int atk=5-def;
                 int adj=rand.Next(adjective.Length);
                 string title2=title[rand.Next(title.Length)];
-                string species2=species[rand.Next(species.Length)];
-                
+                int specIndex = rand.Next(species.Length);
+                string species2=species[specIndex];
+                string[] sprite = specieSprites[specIndex];
                 string name1=adjective[adj]+" "+species2+" "+title2;
                 if(adjusters1[adj]==7){
                     int cardAttack = atk+rand.Next(-4,4);
@@ -45,7 +130,7 @@ namespace Dojo_Beast_Brawl
                     {
                         cardDef = 1;
                     }
-                    Card newCard= new Card(name1,cardAttack,cardDef);
+                    Card newCard= new Card(name1,cardAttack,cardDef,sprite);
                     cards.Add(newCard);
                 }else{
                     int cardAttack = atk+adjusters1[adj];
@@ -58,7 +143,7 @@ namespace Dojo_Beast_Brawl
                     {
                         cardDef = 1;
                     }
-                    Card newCard= new Card(name1,cardAttack,cardDef);
+                    Card newCard= new Card(name1,cardAttack,cardDef,sprite);
                     cards.Add(newCard);
                 }
                 // Card newCard= new Card(name=name1,atk,def);
