@@ -1,0 +1,8 @@
+/Users/davidjohn/src/Dojo-Beast-Brawl/bin/Debug/netcoreapp1.1/Dojo-Beast-Brawl.deps.json
+/Users/davidjohn/src/Dojo-Beast-Brawl/bin/Debug/netcoreapp1.1/Dojo-Beast-Brawl.runtimeconfig.json
+/Users/davidjohn/src/Dojo-Beast-Brawl/bin/Debug/netcoreapp1.1/Dojo-Beast-Brawl.runtimeconfig.dev.json
+/Users/davidjohn/src/Dojo-Beast-Brawl/bin/Debug/netcoreapp1.1/Dojo-Beast-Brawl.dll
+/Users/davidjohn/src/Dojo-Beast-Brawl/bin/Debug/netcoreapp1.1/Dojo-Beast-Brawl.pdb
+/Users/davidjohn/src/Dojo-Beast-Brawl/obj/Debug/netcoreapp1.1/Dojo-Beast-Brawl.AssemblyInfo.cs
+/Users/davidjohn/src/Dojo-Beast-Brawl/obj/Debug/netcoreapp1.1/Dojo-Beast-Brawl.dll
+/Users/davidjohn/src/Dojo-Beast-Brawl/obj/Debug/netcoreapp1.1/Dojo-Beast-Brawl.pdb
